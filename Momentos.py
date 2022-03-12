@@ -7,17 +7,15 @@ Created on Mon Feb 28 16:33:48 2022
 
 import pandas as pd
 import numpy as np
-import math
 
 archivo = 'Sabana_de_notas_1141_243005 (4).xlsx'
-
 df = pd.read_excel(archivo, sheet_name='Sabana_de_notas')
 df=df.fillna('N')
+
 Actividad_1=25
+N_intentos=10
 
 fil ,col=df.shape
-nn=0
-mm=0
 estudiante=[]
 documento=[]
 correo=[]
@@ -29,7 +27,7 @@ Program=[]
 inten=[]
 generacion=[]
 Reprobaron=0
-N_intentos=10
+
 intentos=range(1,1+N_intentos)
 intento2=(np.zeros((len(intentos))))
 generacion1=0
@@ -88,6 +86,7 @@ for X in range(15, fil):
         for Y in range(0,len(Centros)):    
             if df.iloc[X, 21]==Centros[Y]:
                 Cent1[Y]=Cent1[Y]+1
+                
         for Y in range(0,len(Programa)):    
             if df.iloc[X, 22]==Programa[Y]:
                 Programa1[Y]=Programa1[Y]+1
@@ -107,18 +106,16 @@ for X in range(15, fil):
             for Y in range(0,len(Centros)):    
                 if df.iloc[X, 21]==Centros[Y]:
                     Cent2[Y]=Cent2[Y]+1
+                    
             for Y in range(0,len(Programa)):    
                 if df.iloc[X, 22]==Programa[Y]:
-                    Programa2[Y]=Programa2[Y]+1  
+                    Programa2[Y]=Programa2[Y]+1 
+                    
             if (df.iloc[X, 27])[0]=='G':
                 generacion2=generacion2+1
                 #print(generacion2)
         
-        mm=mm+1
-        
 productos = np.transpose([documento,estudiante,correo ])
-    
-est = pd.DataFrame (productos)
 
 grafica=[]
 grafica.append(['Total Estudiantes',fil-15])
@@ -148,15 +145,15 @@ for Z in range(0,len(Programa)):
     Program.append([Programa[Z],Programa1[Z],Programa2[Z]])
 for Z in range(0,len(Zonas)):
     Zone.append([Zonas[Z],zona1[Z],zona2[Z]])
+a=np.arange(0,N_intentos)+1
+for Z in range(0,len(intento2)):
+    inten.append([a[Z],intento2[Z]])
 
+est = pd.DataFrame (productos)
 po = pd.DataFrame (Program)
 ce = pd.DataFrame (Center)
 gra = pd.DataFrame (grafica)
 zo = pd.DataFrame (Zone)
-
-a=np.arange(0,N_intentos)+1
-for Z in range(0,len(intento2)):
-    inten.append([a[Z],intento2[Z]])
 te =pd.DataFrame (inten)
 
 with pd.ExcelWriter('Momento 1.xlsx') as writer:  
