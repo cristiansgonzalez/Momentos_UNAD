@@ -12,4 +12,5 @@ Pestaña 4 (Programa): muestra los programas que tiene el curso junto con los es
 
 
 Pestaña 5 (Intentos): muestra los ceros de los estudiantes que estan repitiendo el curso y cuantas veces ha repetido el curso.
+
 Pestaña 6 (Zonas): muestra por zonas cuantos estudiantes sacaron cero y cuantos reprobaron.
