@@ -73,7 +73,6 @@ for X in range(15, fil):
         
         if (df.iloc[X, 27])[0]=='G':
             generacion1=generacion1+1
-            print(X)
             
         for M in range(0, len(intentos)):
             if df.iloc[X, 7]==intentos[M]:
@@ -157,7 +156,7 @@ zo = pd.DataFrame (Zone)
 te =pd.DataFrame (inten)
 
 with pd.ExcelWriter('Momento 1.xlsx') as writer:  
-    est.to_excel(writer, sheet_name='Estudiantes',header=False,index=False)
+    est.to_excel(writer, sheet_name='Estudiantes',header=['Cedula','Estudiante','Correo'],index=False)
     gra.to_excel(writer, sheet_name='Grafica',header=False,index=False)
     ce.to_excel(writer, sheet_name='Centros',header=['Centros','Ceros','Reprobaron'],index=False)
     po.to_excel(writer, sheet_name='Programa',header=['Programa','Ceros','Reprobaron'],index=False)
