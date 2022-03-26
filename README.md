@@ -2,7 +2,7 @@
 
 Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso, tales como la tasa de aprobación y reprobados por zonas y centro que hay en el país.
 
-### Momentos.py
+## Momentos.py
 
 Crea un documento en excel con 5 pestañas.
 
@@ -18,11 +18,11 @@ Crea un documento en excel con 5 pestañas.
 
 - Pestaña 6 (Zonas): muestra por zonas cuantos estudiantes obtuvieron cero y cuantos reprobaron.
 
-### Mensajes.py
+## Mensajes.py
 
 Toma como valor de entrada el documento exportado con el código Momentos.py y envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
 
-### credenciales.py
+## credenciales.py
 
 El correo electrónico del que va a enviar los correos se agrega en la función usuario()
 
@@ -40,4 +40,9 @@ def clave():
     return contra
 ```
 -------------
+
+## Autor
+
+- Cristian González
+
 <div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
