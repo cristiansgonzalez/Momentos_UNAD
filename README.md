@@ -1,5 +1,3 @@
-![](https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp)
-
 <div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
 
 # UNAD
