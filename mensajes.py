@@ -11,9 +11,9 @@ import pandas as pd
 
 Etapa='1'
 periodo='16-01 2022'
-curso='Sistemas Dinamicos'
+curso='Sistemas Dinámicos'
 plazo='24 de Marzo de 2022'
-docente='Christian Saul Gonzalez Santos'
+docente='Christian Saúl González Santos'
 skype='cristian-saul-66'
 rol='Tutor'
 
@@ -37,16 +37,17 @@ for X in range(0, fil):
     nombres.append(aux[1].capitalize())
     nombres.append(aux[2].capitalize())
     
-    mensaje=('Estimado ',nombres[0],' ',nombres[1],' ',nombres[2],'\n\nMe comunico con el fin de invitarle a realizar la entrega correspondiente',
-             ' del desarrollo de las actividades planteadas en la Etapa ',Etapa,' del curso ',curso,
-             ' del periodo academico ',periodo,' o si deseas mejorar la calificacion que obtuviste. \n\n',
-             'El plazo para la entrega es el proximo ',plazo,' por medio del correo interno del',
-             ' curso antes de las 23:55 horas directamente conmigo. \n\nQuedo atento a sus comentarios.',
-             '\n\nCordialmente. \n\n',docente,'\nskype: ',skype,' \n',rol)
+    mensaje=(f'Estimado Estudiante. {nombres[0]} {nombres[1]} {nombres[2]}\n\nMe comunico con el fin de invitarle ',
+             'a realizar la entrega correspondiente del desarrollo de las actividades planteadas ',
+             f'en la Etapa {Etapa} del curso {curso} del periodo académico {periodo} o si deseas ',
+             'mejorar la calificación que obtuviste. \n\nEl plazo para la entrega es el próximo ',
+             f'{plazo} por medio del correo interno del curso antes de las 23:55 horas directamente ',
+             f'conmigo. \n\nQuedo atento a sus comentarios.\n\nCordialmente.\n\n{docente}',
+             f'\nSkype: {skype}\n{rol}')
     mensaje=''.join(mensaje)
     mensaje='Subject: {}\n\n{}'.format(asunto,mensaje)
-    servidor.sendmail(credenciales.usuario(),estudiante,mensaje)
-    print(X+1,'  ',estudiante)
+    servidor.sendmail(credenciales.usuario(),estudiante,mensaje.encode('latin-1'))
+    print(X,'  ',estudiante)
     con+=1
 
 servidor.quit()
