@@ -22,7 +22,14 @@ Crea un documento en excel con 5 pestañas.
 
 ### Mensajes.py
 
-Toma como valor de entrada el documento exportado con el código Momentos.py 
-Envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
+Toma como valor de entrada el documento exportado con el código Momentos.py y envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
 
+### credenciales.py
+
+El correo electronico del que va a enviar los correos se agrega en 
+
+def usuario():
+    correo='christian.gonzalez@unad.edu.co'
+    return correo
+    
 La información del correo en el que se va a enviar los correos a los estudiantes se colocara en el archivo credenciales.py
