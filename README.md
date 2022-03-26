@@ -1,5 +1,3 @@
-<div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
-
 # Universidad Nacional y a Distancia (UNAD)
 
 Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso, tales como la tasa de aprobación y reprobados por zonas y centro que hay en el país.
@@ -42,3 +40,4 @@ def clave():
     return contra
 ```
 
+<div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
