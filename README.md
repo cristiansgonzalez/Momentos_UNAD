@@ -4,8 +4,8 @@
 
 ### Momentos.py
 
-este codigo permite a los docentes de la UNAD obtener caracteristicas claves de los estudiantes que estan en el curso
-Se crea una documento en excel con 5 pestañas.
+Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso.
+Se crea un documento en excel con 5 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cedula, el nombre y el correo de los estudiantes que perdieron la actividad.
 
