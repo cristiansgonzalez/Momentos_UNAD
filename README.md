@@ -2,8 +2,6 @@
 
 <div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
 
-Fuente: https://www.iteramos.com/pregunta/34047/github-readmemd-imagen-central
-
 # UNAD
 
 ### Momentos.py
