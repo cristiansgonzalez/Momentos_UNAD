@@ -28,8 +28,11 @@ Toma como valor de entrada el documento exportado con el código Momentos.py y e
 
 El correo electronico del que va a enviar los correos se agrega en 
 
+```python
 def usuario():
     correo='christian.gonzalez@unad.edu.co'
     return correo
+```
+
     
 La información del correo en el que se va a enviar los correos a los estudiantes se colocara en el archivo credenciales.py
