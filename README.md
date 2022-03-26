@@ -19,7 +19,7 @@ Crea un documento en excel con 5 pestañas.
 
 - Pestaña 6 (Zonas): muestra por zonas cuantos estudiantes obtuvieron cero y cuantos reprobaron.
 
-### mensajes.py
+### Mensajes.py
 
 Toma como valor de entrada el documento exportado con el código Momentos.py 
 Envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
