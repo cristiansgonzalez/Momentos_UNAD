@@ -26,7 +26,7 @@ Toma como valor de entrada el documento exportado con el código Momentos.py y e
 
 ### credenciales.py
 
-El correo electronico del que va a enviar los correos se agrega en la funcion usuario()
+El correo electrónico del que va a enviar los correos se agrega en la función usuario()
 
 ```python
 def usuario():
@@ -34,10 +34,11 @@ def usuario():
     return correo
 ```
 
-la contraseña del correo electronico escogido se ingresa en la funcion clave()
+La contraseña del correo electrónico escogido se ingresa en la función clave()
 
 ```python
 def clave():
     contra='CONTRASEÑA'
     return contra
 ```
+
