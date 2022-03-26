@@ -51,4 +51,4 @@ for X in range(0, fil):
 
 servidor.quit()
 
-print(X,' se enviaron exitosamente')
+print('\n',X+1,' mensajes se enviaron exitosamente')
