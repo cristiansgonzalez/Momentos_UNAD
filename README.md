@@ -6,7 +6,7 @@ Este código permite a los docentes de la UNAD obtener características claves d
 
 Como parametro de entrada se debe ingresar el excel descargado desde el centralizador de la UNAD, y cambiar el nombre en la siguiente linea de codigo.
 ```python
-11 archivo = 'NOMBRE_DEL_EXCEL.xlsx'
+> 11 archivo = 'NOMBRE_DEL_EXCEL.xlsx'
 ```
 
 Crea un documento en excel con 5 pestañas.
