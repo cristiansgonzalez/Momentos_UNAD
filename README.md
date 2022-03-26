@@ -4,13 +4,13 @@ Este código permite a los docentes de la UNAD obtener características claves d
 
 ## Momentos.py
 
-Como parametro de entrada se debe ingresar el nombre del documento en excel, el cual se descarga desde el centralizador de la UNAD y agregarlo en la siguiente linea de codigo.
+Como parámetro de entrada se debe ingresar el nombre del documento en excel, el cual se descarga desde el centralizador de la UNAD y agregarlo en la siguiente línea de código.
 
 ```python
 archivo = 'NOMBRE_DEL_EXCEL.xlsx'
 ```
 
-Se creara un documento en excel que se llama `Momento 1.xlsx`con 5 pestañas.
+Se creara un documento en excel que se llama `Momento 1.xlsx`con 6 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que perdieron la actividad.
 
