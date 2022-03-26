@@ -2,9 +2,10 @@
 
 # Universidad Nacional y a Distancia (UNAD)
 
+Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso, tales como la tasa de aprobación y reprobados por zonas y centro que hay en el país.
+
 ### Momentos.py
 
-Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso, tales como la tasa de aprobación y reprobados por zonas y centro que hay en el país.
 Crea un documento en excel con 5 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que perdieron la actividad.
