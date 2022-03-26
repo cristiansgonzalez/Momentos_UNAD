@@ -43,6 +43,6 @@ def clave():
 
 ## Autor
 
-- Cristian González
+- Cristian González (<cristian-saul-66@hotmail.com>)
 
 <div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
