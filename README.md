@@ -6,8 +6,9 @@ Este código permite a los docentes de la UNAD obtener características claves d
 
 Como parametro de entrada se debe ingresar el excel descargado desde el centralizador de la UNAD, y cambiar el nombre en la siguiente linea de codigo.
 
-> 11 archivo = 'NOMBRE_DEL_EXCEL.xlsx'
-
+'''python
+archivo = 'NOMBRE_DEL_EXCEL.xlsx'
+'''
 
 Crea un documento en excel con 5 pestañas.
 
@@ -39,7 +40,7 @@ def usuario():
 
 La contraseña del correo electrónico escogido se ingresa en la función clave()
 
-```python
+>
 def clave():
     contra='CONTRASEÑA'
     return contra
