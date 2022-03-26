@@ -26,24 +26,18 @@ Toma como valor de entrada el documento exportado con el código Momentos.py y e
 
 ### credenciales.py
 
-El correo electronico del que va a enviar los correos se agrega en 
+El correo electronico del que va a enviar los correos se agrega en la funcion usuario()
 
 ```python
 def usuario():
-    correo='christian.gonzalez@unad.edu.co'
+    correo='CORREO ELECTRONICO'
     return correo
 ```
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <mate charest="utf-8" />
-        <title>Hello world!</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-    </body>
-</html>
+la contraseña del correo electronico escogido se ingresa en la funcion clave()
+
+```python
+def clave():
+    contra='CONTRASEÑA'
+    return contra
 ```
-La información del correo en el que se va a enviar los correos a los estudiantes se colocara en el archivo credenciales.py
