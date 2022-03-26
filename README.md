@@ -1,6 +1,6 @@
 <div style="text-align:center"><img src ="https://github.com/lokocristian/Momentos_UNAD/blob/main/icono.webp" /></div>
 
-# UNAD
+# Universidad Nacional y a Distancia (UNAD)
 
 ### Momentos.py
 
