@@ -4,6 +4,11 @@ Este código permite a los docentes de la UNAD obtener características claves d
 
 ## Momentos.py
 
+Como parametro de entrada se debe ingresar el excel descargado desde el centralizador de la UNAD, y cambiar el nombre en la siguiente linea de codigo.
+```python
+archivo = 'NOMBRE_DEL_EXCEL.xlsx'
+```
+
 Crea un documento en excel con 5 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que perdieron la actividad.
@@ -28,7 +33,7 @@ El correo electrónico del que va a enviar los correos se agrega en la función 
 
 ```python
 def usuario():
-    correo='CORREO ELECTRONICO'
+    correo='CORREO_ELECTRONICO'
     return correo
 ```
 
