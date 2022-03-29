@@ -8,7 +8,7 @@ Created on Mon Feb 28 16:33:48 2022
 import pandas as pd
 import numpy as np
 
-archivo = 'Sabana_de_notas_1141_243005.xlsx'
+archivo = 'Sabana_de_notas_1141_243005.xlsx' #archivo = 'NOMBRE_DEL_EXCEL.xlsx'
 df = pd.read_excel(archivo, sheet_name='Sabana_de_notas')
 df=df.fillna('N')
 
