@@ -26,7 +26,7 @@ Se creara un documento en excel que se llama `Momento 1.xlsx`con 6 pestañas.
 
 ## Mensajes.py
 
-Toma como valor de entrada el documento exportado con el código Momentos.py y envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
+Toma como valor de entrada el documento exportado con el código `Momentos.py` y envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
 
 ## credenciales.py
 
