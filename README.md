@@ -10,7 +10,7 @@ Como parámetro de entrada se debe ingresar el nombre del documento en excel, el
 archivo = 'NOMBRE_DEL_EXCEL.xlsx'
 ```
 
-Se creara un documento en excel que se llama `Momento 1.xlsx`con 6 pestañas.
+Se creara un documento en excel que se llama `Momento 1.xlsx`con 2 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que perdieron la actividad.
 
