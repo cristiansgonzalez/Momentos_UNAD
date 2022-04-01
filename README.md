@@ -22,7 +22,7 @@ Toma como valor de entrada el documento exportado con el código `Analisis_estud
 
 ## credenciales.py
 
-El correo electrónico del que va a enviar los correos se agrega en la función usuario()
+El correo electrónico del que va a enviar los correos se agrega en la función `usuario()`
 
 ```python
 def usuario():
@@ -30,7 +30,7 @@ def usuario():
     return correo
 ```
 
-La contraseña del correo electrónico escogido se ingresa en la función clave()
+La contraseña del correo electrónico escogido se ingresa en la función `clave()`
 
 ```python
 def clave():
