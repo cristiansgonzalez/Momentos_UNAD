@@ -1,18 +1,44 @@
 # Universidad Nacional y a Distancia (UNAD)
 
-Este código permite a los docentes de la UNAD obtener características claves de los estudiantes que están en el curso, tales como la tasa de aprobación y reprobados por zonas y centro que hay en el país.
+Este código permite a los docentes de la UNAD obtener características claves de los estudiantes del curso, tales como numero de estudiantes que reprobaron y no presentaron la actividad con sus debidos porcentajes    
 
-## Analisis_estudiantes.py
+## Principal.py
 
-Como parámetro de entrada se debe ingresar el nombre del documento en excel, el cual se descarga desde el centralizador de la UNAD y agregarlo en la siguiente línea de código.
+Los parametros de entrada son 5:
+
+1. Ingresar el nombre del documento en excel, el cual se descarga desde el centralizador de la UNAD y agregarlo en la siguiente línea de código.
 
 ```python
-archivo = 'NOMBRE_DEL_EXCEL.xlsx'
+archivo = 'NOMBRE_DEL_EXCEL'
 ```
 
-Se creara un documento en excel que se llama `Momento 1.xlsx`con 2 pestañas.
+2. Ingresar cuantos puntos vale la actividad que se quiere analizar.
 
-- Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que perdieron la actividad.
+```python
+puntaje_actividad = 25
+```
+
+3. Ingresar el numero de actividad.
+
+```python
+Etapa = 1
+```
+
+4. Ingresar el numero total de actividad que tiene el curso.
+
+```python
+Etapas_totales = 5
+```
+
+5. Si el grupo tiene generacion E colocar `'si'` de lo contrario colocar `'no'`.
+
+```python
+Generacion_E ='si'
+```
+
+Se creara un documento en excel que se llama `Reporte 1.xlsx`con 2 pestañas.
+
+- Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que no presentaron y que la perdieron la actividad.
 
 - Pestaña 2 (Grafica): muestra el total de estudiantes del curso, los estudiantes que aprobaron la etapa, los estudiantes que perdieron la etapa, los estudiantes que no participaron, el porcentaje de aprobación, el porcentaje de los que no participaron, el porcentaje de los estudiantes que perdieron.
 
