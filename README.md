@@ -6,7 +6,7 @@ Este código permite a los docentes de la UNAD obtener características claves d
 
 Los parametros de entrada son 5:
 
-1. Ingresar el nombre del documento en excel, el cual se descarga desde el centralizador de la UNAD y agregarlo en la siguiente línea de código.
+1. Descargar el excel desde el centralizador de la UNAD, guardarlo en la misma carpeta en donde decargo el `Principal.py` y colocar el nombre del documento que descargo en la siguiente línea de código.
 
 ```python
 archivo = 'NOMBRE_DEL_EXCEL'
