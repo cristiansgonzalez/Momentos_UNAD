@@ -1,12 +1,12 @@
 # Universidad Nacional y a Distancia (UNAD)
 
-Este código permite a los docentes de la UNAD obtener características claves de los estudiantes del curso, tales como numero de estudiantes que reprobaron y no presentaron la actividad con sus debidos porcentajes    
+Este código permite a los docentes de la UNAD obtener características claves de los estudiantes del curso, tales como número de estudiantes que reprobaron y no presentaron la actividad con sus debidos porcentajes    
 
 ## Principal.py
 
-Los parametros de entrada son 5:
+Los parámetros de entrada son 4:
 
-1. Descargar el excel desde el centralizador de la UNAD, guardarlo en la misma carpeta en donde decargo el `Principal.py` y colocar el nombre del documento que descargo en la siguiente línea de código.
+1. Descargar el excel desde el centralizador de la UNAD, guardarlo en la misma carpeta en donde descargo el `Principal.py` y colocar el nombre del documento que descargo en la siguiente línea de código.
 
 ```python
 archivo = 'NOMBRE_DEL_EXCEL'
@@ -30,13 +30,7 @@ Etapa = 1
 Etapas_totales = 5
 ```
 
-5. Si el grupo tiene generacion E colocar `'si'` de lo contrario colocar `'no'`.
-
-```python
-Generacion_E ='si'
-```
-
-Se creara un documento en excel que se llama `Reporte 1.xlsx`con 2 pestañas.
+Se creara un documento en excel que se llama `Reporte #.xlsx` (# indica que actividad fue analizada) con 2 pestañas.
 
 - Pestaña 1 (Estudiantes): muestra la cédula, el nombre y el correo electrónico de los estudiantes que no presentaron y que la perdieron la actividad.
 
@@ -44,9 +38,9 @@ Se creara un documento en excel que se llama `Reporte 1.xlsx`con 2 pestañas.
 
 ## Mensajes.py
 
-Toma como valor de entrada el documento exportado con el código `Analisis_estudiantes.py` y envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar sus actividades pendientes.
+Toma como valor de entrada el documento exportado con el código `Principal.py` y les envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar su actividad pendiente.
 
-## credenciales.py
+## Credenciales.py
 
 El correo electrónico del que va a enviar los correos se agrega en la función `usuario()`
 
@@ -68,4 +62,3 @@ def clave():
 ## Autor
 
 - Cristian González (<cristian-saul-66@hotmail.com>)
-
