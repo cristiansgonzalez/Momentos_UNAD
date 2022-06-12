@@ -36,6 +36,14 @@ Se creara un documento en excel que se llama `Reporte #.xlsx` (# indica que acti
 
 - Pestaña 2 (Grafica): muestra el total de estudiantes del curso, los estudiantes que aprobaron la etapa, los estudiantes que perdieron la etapa, los estudiantes que no participaron, el porcentaje de aprobación, el porcentaje de los que no participaron, el porcentaje de los estudiantes que perdieron.
 
+- Pestaña 3 (Centros): muestra por cada uno de los centros de la UNAD cuantos estudiantes obtuvieron cero y los que reprobaron la actividad.
+
+- Pestaña 4 (Programa): muestra por cada uno de los programas cuantos estudiantes obtuvieron ceros, cuantos reprobaron y cuantos aprobaron.
+
+- Pestaña 5 (Intentos): muestra los estudiantes que están repitiendo el curso, cuantas veces ha repetido y cuantos obtuvieron cero en la etapa.
+
+- Pestaña 6 (Zonas): muestra por zonas cuantos estudiantes obtuvieron cer, cuantos reprobaron y cuantos aprobaron.
+
 ## Mensajes.py
 
 Toma como valor de entrada el documento exportado con el código `Principal.py` y les envía a los estudiantes que perdieron o no entregaron la actividad un mensaje a su correo institucional, donde se le invita a entregar su actividad pendiente.
