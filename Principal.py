@@ -15,10 +15,12 @@ Etapas_totales= cantidad total de estapas
 '''
 
 
-archivo = 'Sabana_de_notas_1141_204017_848'
-puntaje_actividad = 25
-Etapa = 1
-Etapas_totales = 5
+archivo= 'estudiantes'
+puntaje_actividad= 300
+Etapa= 2
+Etapas_totales= 5
+Generacion_E='si'
 
+#arg=[archivo,puntaje_actividad,Etapa,Etapas_totales,Generacion_E]
 
-Inicializar.inicio(archivo,puntaje_actividad,Etapa,Etapas_totales)
+Inicializar.inicio(archivo,puntaje_actividad,Etapa,Etapas_totales,Generacion_E)

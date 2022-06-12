@@ -11,7 +11,6 @@ def inicio(*arg):
     
     try:
         
-        Analisis.Analisis_Curso(arg[0], arg[1], arg[2], arg[3])
+        Analisis.Analisis_Curso(arg[0], arg[1], arg[2], arg[3], arg[4])
     except:
         print('Error de compilacion, Verificar los datos ingresados')
-        
