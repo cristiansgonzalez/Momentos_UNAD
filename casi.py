@@ -24,7 +24,7 @@ class UNAD(Tk):
         self.title('Analisis')   
         self.geometry("500x500")   
         self.config(background = "red")
-        self.iconbitmap('unad.ico')
+        self.iconbitmap("Imagenes/unad.ico")
         
         #Explica que hace el software
         self.Tutorial()
