@@ -55,7 +55,7 @@ class UNAD(Tk):
         
         # letrero ingrese el puntaje de la actividad
         lbpuntaje=Label(self,text="Puntaje de la actividad",bd = 3,width=25)
-        lbpuntaje.place(x=300,y=350)
+        lbpuntaje.place(x=300,y=340)
         
         #self.actividades()
         
