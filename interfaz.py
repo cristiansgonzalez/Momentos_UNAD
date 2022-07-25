@@ -28,7 +28,7 @@ class UNAD(Tk):
         # configure the root window
         self.title('Analisis')   
         self.geometry("500x527")   
-        self.config(background = "red")
+        self.config(background = "#0c4966")
         self.iconbitmap("Imagenes/unad.ico")
         self.resizable(0,0)
         
@@ -36,7 +36,8 @@ class UNAD(Tk):
         self.Tutorial()
       
         # Boton para abrir el documento
-        self.btOpen = Button(self, text = "Abrir Documento", bd = 3, command = self.abrirArchivo, width = 24)
+        self.btOpen = Button(self, text = "Abrir Documento", activebackground='#f4af00', background='#f4af00',
+                             bd = 3, command = self.abrirArchivo, width = 24)
         self.btOpen.place(x = 302 , y = 20)
         self.btOpen.bind("<Enter>", self.bh)
         self.btOpen.bind("<Leave>", self.bhl)
@@ -53,7 +54,8 @@ class UNAD(Tk):
         NdeActivades.place(x = 300, y = 145 + self.bajar)
       
         # boton Ok  para que aparezcan las opciones
-        self.btOk = Button(self, text = "Ok", bd = 3, command = self.actividades, width = 5)
+        self.btOk = Button(self, text = "Ok", activebackground='#f4af00', background='#f4af00', 
+                           bd = 3, command = self.actividades, width = 5)
         self.btOk.place(x = 437 ,y = 143 + self.bajar)
         self.btOk.bind("<Enter>", self.bh1)
         self.btOk.bind("<Leave>", self.bhl1)
@@ -71,7 +73,8 @@ class UNAD(Tk):
         puntajeActivades.place(x = 300, y = 375 + self.bajar)
 
         # boton Analizar Ejecuta todo el codigo 
-        self.btAnalizar = Button(self, text = "Analizar", bd = 3, command = self.Analizar, width = 24)
+        self.btAnalizar = Button(self, text = "Analizar", activebackground='#f4af00', background='#f4af00', 
+                                 bd = 3, command = self.Analizar, width = 24)
         self.btAnalizar.place(x = 302, y = 410 + self.bajar)
         self.btAnalizar.bind("<Enter>", self.bh2)
         self.btAnalizar.bind("<Leave>", self.bhl2)
@@ -106,27 +109,27 @@ class UNAD(Tk):
         self.lbinformacion.config(text="Selecciono " + self.TDAVar.get() + "\n")
 
     def bh(self,e):
-        self.btOpen["bg"] = "white"
+        self.btOpen["bg"] = "#e67016"
     def bhl(self,e):
-        self.btOpen["bg"] = "SystemButtonFace"
+        self.btOpen["bg"] = "#f4af00"
     def bh1(self,e):
-        self.btOk["bg"] = "white"
+        self.btOk["bg"] = "#e67016"
     def bhl1(self,e):
-        self.btOk["bg"] = "SystemButtonFace"
+        self.btOk["bg"] = "#f4af00"
     def bh2(self,e):
-        self.btAnalizar["bg"] = "white"
+        self.btAnalizar["bg"] = "#e67016"
     def bhl2(self,e):
-        self.btAnalizar["bg"] = "SystemButtonFace"
+        self.btAnalizar["bg"] = "#f4af00"
         
     def Analizar(self):
         test.visualizar(self.archivo_abierto, int(puntajeActivades.get()), self.var.get(), int(NdeActivades.get()), "si", self.TDAVar.get())
         informacion = Analisis2.Analisis_Curso(self.archivo_abierto, int(puntajeActivades.get()), self.var.get(), int(NdeActivades.get()), "si", self.TDAVar.get())
-        self.lbinformacion.config(text = informacion)
+        self.lbinformacion.config(text = f'{informacion}\n')
         
     def actividades(self):
         
-        lbNdeActivades=Label(self,bg="red",text="",bd = 3,height=6,width=26)
-        lbNdeActivades.place(x=300,y=230)
+        lbNdeActivades = Label(self,bg = "#0c4966", text = "", bd = 3, height = 6, width = 26)
+        lbNdeActivades.place(x = 300, y = 230 + self.bajar)
         
         print("Numero total de actividades")
         print(type(NdeActivades.get()))
@@ -207,7 +210,7 @@ class UNAD(Tk):
                  "-Despues de que aparezca el mensaje \n"+
                  "escriba el numero de la actividad que desea \n"+
                  "analizar",
-                 height=27,width=35)
+                 height=29,width=35)
         lbintrucciones.place(x=15,y=15)
         
         

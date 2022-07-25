@@ -5,7 +5,6 @@ def Analisis_Curso(*arg):
     import numpy as np
     import statistics
     nombre = str(arg[0])
-    print(nombre.replace(".xlsx",""))
     df = pd.read_excel(arg[0], sheet_name='Sabana_de_notas')    
     df=df.fillna('**********')
     
@@ -90,9 +89,6 @@ def Analisis_Curso(*arg):
     col_75=titulos.index('75 %')
     
     
-    
-    
-    
     #Se guardan todos los centros, programas y zonas
     Centros=list(set((df.iloc[inicial::,col_centro])))
     Centros.sort()
@@ -133,14 +129,10 @@ def Analisis_Curso(*arg):
             
             
             if df.iloc[X, col_condi_especiales]!='**********':
-                print(df.iloc[X, col_condi_especiales])
                 condi_estudiante.append(df.iloc[X, 3])
                 condi_documento.append(df.iloc[X, 2])
                 condi_correo.append(df.iloc[X, 4])
                 condicion.append(df.iloc[X, col_condi_especiales])
-                
-            #print(f'{df.iloc[X, 5]} {X}')
-            #print(f'{df.iloc[X, 3]} {X}')
                     
             if df.iloc[X, 7+arg[2]]=='NO PRESENTADA' or df.iloc[X, 7+arg[2]]==0:
                 
@@ -326,10 +318,6 @@ def Analisis_Curso(*arg):
     grafica=[]
     
     total_estudiantes=fil-inicial-aplazado
-    print(total_estudiantes)
-    print(arg[0])
-    print(arg[2])
-    print(Ceros)
     grafica.append(['Total Estudiantes',total_estudiantes])
     grafica.append(['Estudiantes Participaron '+arg[5]+' '+str(arg[2]),total_estudiantes-Ceros])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),Ceros])
@@ -340,7 +328,7 @@ def Analisis_Curso(*arg):
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),Ceros])
     grafica.append(['Estudiantes Participaron y Aprobaron '+arg[5]+' '+str(arg[2]),Aprobado])
     grafica.append(['Estudiantes Participaron y No Aprobaron '+arg[5]+' '+str(arg[2]),Reprobaron])
-    print("hola")
+    
     grafica.append(['',''])
     grafica.append(['Aprobaron %',(Aprobado/(total_estudiantes))*100])
     grafica.append(['No participo %',(Ceros/(total_estudiantes))*100])
@@ -355,7 +343,7 @@ def Analisis_Curso(*arg):
     grafica.append(['Total Matricula 0',len(total_matri0)])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),matricula1])
     grafica.append(['Estudiantes Reprobaron ',matricula2])
-    print("hola")
+    
     prom_total.append(total_gen+total_matri0+prom_bene)    
     total_sin_bene=total_estudiantes-len(total_matri0)-len(total_gen)
     apro_sin=Aprobado-apro_Gen-apro_Matri0
@@ -449,8 +437,7 @@ def Analisis_Curso(*arg):
             te.to_excel(writer, sheet_name='Intentos',header=['Intentos','Ceros','Reprobaron','Aprobaron','Total'],index=False)
             zo.to_excel(writer, sheet_name='Zonas',header=['Zonas','Ceros','Reprobaron','Aprobaron','Total'],index=False)
             condi.to_excel(writer, sheet_name='Condiciones',header=['Cedula','Estudiante','Correo','Condicion especial'],index=False)
-    except:
-        print('\n\nNo se puedo crear el '+'Reporte '+str(arg[2])+'.xlsx\n')
+    except:        
         salida = '\nNo se puedo crear el '+'Reporte '+str(arg[2])+'.xlsx\n'
         return salida
     finally:   
