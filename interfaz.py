@@ -125,6 +125,7 @@ class UNAD(Tk):
         test.visualizar(self.archivo_abierto, int(puntajeActivades.get()), self.var.get(), int(NdeActivades.get()), "si", self.TDAVar.get())
         informacion = Analisis2.Analisis_Curso(self.archivo_abierto, int(puntajeActivades.get()), self.var.get(), int(NdeActivades.get()), "si", self.TDAVar.get())
         self.lbinformacion.config(text = f'{informacion}\n')
+        showinfo(message = informacion, title = "Información")
         
     def actividades(self):
         
