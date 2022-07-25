@@ -89,7 +89,6 @@ class UNAD(Tk):
         a = self.archivo_abierto.split("/")
         if self.archivo_abierto != "":
             self.aux = 1
-            print(type(a))
             self.lbinformacion.config(text = f"El documento {a[-1]} a sido cargado exitosamente\n")
 
     def tipoDeActividad(self):

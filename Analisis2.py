@@ -4,7 +4,8 @@ def Analisis_Curso(*arg):
     import pandas as pd
     import numpy as np
     import statistics
-    print(arg[0])
+    nombre = str(arg[0])
+    print(nombre.replace(".xlsx",""))
     df = pd.read_excel(arg[0], sheet_name='Sabana_de_notas')    
     df=df.fillna('**********')
     
@@ -394,6 +395,7 @@ def Analisis_Curso(*arg):
     total_sin_bene2=total_estudiantes2-len(total_matri02)-len(total_gen2)
     print(f'sin beneficio {total_sin_bene2}\n',
           f'total estudiantes: {total_estudiantes2}')
+    
     apro_sin2=Aprobado2-apro_Gen2-apro_Matri02
     repo_sin2=Reprobaron2-generacion22-matricula22
     ceros_sin2=Ceros2-generacion12-matricula12
@@ -436,8 +438,10 @@ def Analisis_Curso(*arg):
     te =pd.DataFrame (inten)
     condi =pd.DataFrame (condiciones)
     
+    
     try:
-        with pd.ExcelWriter(arg[0]+' Reporte '+str(arg[2])+'.xlsx') as writer:  
+        
+        with pd.ExcelWriter(nombre.replace(".xlsx", "") +' Reporte '+str(arg[2])+'.xlsx') as writer:  
             est.to_excel(writer, sheet_name='Estudiantes',header=['Cedula','Estudiante','Correo'],index=False)
             gra.to_excel(writer, sheet_name='Grafica',header=False,index=False)
             ce.to_excel(writer, sheet_name='Centros',header=['Centros','Ceros','Reprobaron','Aprobaron'],index=False)
