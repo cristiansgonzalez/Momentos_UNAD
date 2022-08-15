@@ -4,7 +4,24 @@ Created on Fri Apr  1 22:13:40 2022
 
 @author: Cristian Gonzalez
 """
+def contar(datos, fila, item, item_columna, listado):
 
+    for Y in range(0,len(item)):    
+        if datos.iloc[fila, item_columna]==item[Y]:
+            listado[Y]=listado[Y]+1
+    return listado
+
+def convenio(datos, fila, col_g, col_d, generacion, total_generacion, matricula_0, total_matricula_0):
+
+    if (datos.iloc[fila, col_g])[0] == 'G':
+        generacion = generacion + 1
+        total_generacion.append(datos.iloc[fila, col_d])                          
+
+    if (datos.iloc[fila, col_g])[0] == 'M':
+        matricula_0 = matricula_0 + 1
+        total_matricula_0.append(datos.iloc[fila, col_d])
+    
+    return generacion, total_generacion, matricula_0, total_matricula_0
 
 def Analisis_Curso(*arg):
     
@@ -48,6 +65,7 @@ def Analisis_Curso(*arg):
     Zone=[]
     Program=[]
     inten=[]
+    grafica=[]
     
     # Variables numero de intentos
     Ceros2=0
@@ -96,9 +114,6 @@ def Analisis_Curso(*arg):
     col_75=titulos.index('75 %')
     
     
-    
-    
-    
     #Se guardan todos los centros, programas y zonas
     Centros=list(set((df.iloc[inicial::,col_centro])))
     Centros.sort()
@@ -126,8 +141,6 @@ def Analisis_Curso(*arg):
     else:
         col_definitiva=titulos.index('Definitiva')
         
- 
-    
     if df.iloc[inicial,col_75]=='**********':        
         for m in range(inicial,fil):
             for mm in range (0,3):
@@ -136,17 +149,12 @@ def Analisis_Curso(*arg):
     for X in range(inicial, fil):
         
         if df.iloc[X, col_matricula]=='Reportado' or df.iloc[X, col_matricula]=='Matriculado' or df.iloc[X, col_matricula]=='Reportado 75%':
-            
-            
+               
             if df.iloc[X, col_condi_especiales]!='**********':
-                print(df.iloc[X, col_condi_especiales])
                 condi_estudiante.append(df.iloc[X, 3])
                 condi_documento.append(df.iloc[X, 2])
                 condi_correo.append(df.iloc[X, 4])
                 condicion.append(df.iloc[X, col_condi_especiales])
-                
-            #print(f'{df.iloc[X, 5]} {X}')
-            #print(f'{df.iloc[X, 3]} {X}')
                     
             if df.iloc[X, 7+arg[2]]=='NO PRESENTADA' or df.iloc[X, 7+arg[2]]==0:
                 
@@ -155,110 +163,54 @@ def Analisis_Curso(*arg):
                 documento.append(df.iloc[X, 2])
                 correo.append(df.iloc[X, 4])
                 Ceros=Ceros+1
-                #print('Ceros: ',Ceros)
                 
                 if arg[4]=='si':
-                    if (df.iloc[X, col_generacion_e])[0]=='G':
-                        generacion1=generacion1+1
-                        total_gen.append(df.iloc[X, col_definitiva])                          
-                
-                    if (df.iloc[X, col_generacion_e])[0]=='M':
-                        matricula1=matricula1+1
-                        total_matri0.append(df.iloc[X, col_definitiva])
-                        
+                    generacion1, total_gen, matricula1, total_matri0 = convenio(df,
+                            X, col_generacion_e, col_definitiva, generacion1, total_gen, matricula1, total_matri0)
+
                 if (df.iloc[X, col_generacion_e])[0]!='G' and (df.iloc[X, col_generacion_e])[0]!='M':
                     prom_bene.append(df.iloc[X, col_definitiva])
-                    
-                for M in range(0, len(intentos)):
-                    if df.iloc[X, 7]==intentos[M]:
-                        intento2[M]=intento2[M]+1
-                
-                for Y in range(0,len(Zonas)):    
-                    if df.iloc[X, col_zona]==Zonas[Y]:
-                        zona1[Y]=zona1[Y]+1
-                
-                for Y in range(0,len(Centros)):    
-                    if df.iloc[X, col_centro]==Centros[Y]:
-                        Cent1[Y]=Cent1[Y]+1
-                        
-                for Y in range(0,len(Programa)):    
-                    if df.iloc[X, col_programa]==Programa[Y]:
-                        Programa1[Y]=Programa1[Y]+1 
-                        
-                    
-                #print(f'{df.iloc[X, 7+arg[2]]} {X}')
+                                  
+                Cent1 = contar(df, X, Centros, col_centro, Cent1)                        
+                Programa1 = contar(df, X, Programa, col_programa, Programa1)
+                intento2 = contar(df, X, intentos, 7, intento2)                
+                zona1 = contar(df, X, Zonas, col_zona, zona1)
             
             else:
                 if float(df.iloc[X, 7+arg[2]])>=arg[1]*0.6:
-                    #print('Aprobado  '+df.iloc[X, 7+arg[2]])
                     
                     Aprobado=Aprobado+1
-                    for Y in range(0,len(Programa)):    
-                        if df.iloc[X, col_programa]==Programa[Y]:
-                            aprobado_programa[Y]=aprobado_programa[Y]+1
                             
-                    for Y in range(0,len(Centros)):    
-                        if df.iloc[X, col_centro]==Centros[Y]:
-                            aprobado_Cent[Y]=aprobado_Cent[Y]+1
-                            
-                    for Y in range(0,len(Zonas)):    
-                        if df.iloc[X, col_zona]==Zonas[Y]:
-                            aprobado_zona[Y]=aprobado_zona[Y]+1
-                            
-                    for M in range(0, len(intentos)):
-                        if df.iloc[X, 7]==intentos[M]:
-                            apro_intento[M]=apro_intento[M]+1
+                    aprobado_Cent = contar(df, X, Centros, col_centro, aprobado_Cent)                            
+                    aprobado_programa = contar(df, X, Programa, col_programa, aprobado_programa)                            
+                    apro_intento = contar(df, X, intentos, 7, apro_intento)
+                    aprobado_zona = contar(df, X, Zonas, col_zona, aprobado_zona)
                     
                     if arg[4]=='si':
-                        if (df.iloc[X, col_generacion_e])[0]=='G':
-                            apro_Gen=apro_Gen+1
-                            total_gen.append(df.iloc[X, col_definitiva])
-                    
-                        if (df.iloc[X, col_generacion_e])[0]=='M':
-                            apro_Matri0=apro_Matri0+1
-                            total_matri0.append(df.iloc[X, col_definitiva])
-                    
-                    #print('Aprobado: ', str(Aprobado))
+                        apro_Gen, total_gen, apro_Matri0, total_matri0 = convenio(df,
+                            X, col_generacion_e, col_definitiva, apro_Gen, total_gen, apro_Matri0, total_matri0)
                 
                 if float(df.iloc[X, 7+arg[2]])<arg[1]*0.6:
                     Reprobaron=Reprobaron+1
                     estudiante.append(df.iloc[X, 3])
                     documento.append(df.iloc[X, 2])
                     correo.append(df.iloc[X, 4])
-                    #print('Reprobaron: ', str(Reprobaron))
-                    for M in range(0, len(intentos)):
-                        if df.iloc[X, 7]==intentos[M]:
-                            repro_intento[M]=repro_intento[M]+1
-                    
-                    for Y in range(0,len(Zonas)):    
-                        if df.iloc[X, col_zona]==Zonas[Y]:
-                            zona2[Y]=zona2[Y]+1
-                    
-                    for Y in range(0,len(Centros)):    
-                        if df.iloc[X, col_centro]==Centros[Y]:
-                            Cent2[Y]=Cent2[Y]+1
-                            
-                    for Y in range(0,len(Programa)):    
-                        if df.iloc[X, col_programa]==Programa[Y]:
-                            Programa2[Y]=Programa2[Y]+1
-                            
+
+                    Cent2 = contar(df, X, Centros, col_centro, Cent2)                            
+                    Programa2 = contar(df, X, Programa, col_programa, Programa2) 
+                    repro_intento = contar(df, X, intentos, 7, repro_intento)
+                    zona2 = contar(df, X, Zonas, col_zona, zona2)   
                     
                     if arg[4]=='si':
-                        if (df.iloc[X, col_generacion_e])[0]=='G':
-                            generacion2=generacion2+1
-                            total_gen.append(df.iloc[X, col_definitiva])
-                            
-                        if (df.iloc[X, col_generacion_e])[0]=='M':
-                            matricula2=matricula2+1
-                            total_matri0.append(df.iloc[X, col_definitiva])
-                        #print(generacion2)
+                        generacion2, total_gen, matricula2, total_matri0 = convenio(df,
+                            X, col_generacion_e, col_definitiva, generacion2, total_gen, matricula2, total_matri0)
                 
                 if (df.iloc[X, col_generacion_e])[0]!='G' and (df.iloc[X, col_generacion_e])[0]!='M':
                     prom_bene.append(df.iloc[X, col_definitiva])
                 
                 
                 #########################################
-            if df.iloc[X, 7]>=2:
+            if df.iloc[X, 7]>=2 :
                 
                 total_estudiantes2=total_estudiantes2+1
                 #print(df.iloc[X, 7+arg[2]])
@@ -267,14 +219,8 @@ def Analisis_Curso(*arg):
                     Ceros2=Ceros2+1
                     
                     if arg[4]=='si':
-                        if (df.iloc[X, col_generacion_e])[0]=='G':
-                            generacion12=generacion12+1
-                            total_gen2.append(df.iloc[X, col_definitiva])
-                            print(df.iloc[X, col_definitiva])
-                    
-                        if (df.iloc[X, col_generacion_e])[0]=='M':
-                            matricula12=matricula12+1
-                            total_matri02.append(df.iloc[X, col_definitiva])
+                        generacion12, total_gen2, matricula12, total_matri02 = convenio(df,
+                            X, col_generacion_e, col_definitiva, generacion12, total_gen2, matricula12, total_matri02)
                             
                     if (df.iloc[X, col_generacion_e])[0]!='G' and (df.iloc[X, col_generacion_e])[0]!='M':
                         prom_bene2.append(df.iloc[X, col_definitiva])
@@ -285,38 +231,24 @@ def Analisis_Curso(*arg):
                         Aprobado2=Aprobado2+1
                         
                         if arg[4]=='si':
-                            if (df.iloc[X, col_generacion_e])[0]=='G':
-                                apro_Gen2=apro_Gen2+1
-                                total_gen2.append(df.iloc[X, col_definitiva])
-                        
-                            if (df.iloc[X, col_generacion_e])[0]=='M':
-                                apro_Matri02=apro_Matri02+1
-                                total_matri02.append(df.iloc[X, col_definitiva])
+                            apro_Gen2, total_gen2, apro_Matri02, total_matri02 = convenio(df,
+                                X, col_generacion_e, col_definitiva, apro_Gen2, total_gen2, apro_Matri02, total_matri02)
                     
                     if float(df.iloc[X, 7+arg[2]])<arg[1]*0.6:
                         
                         Reprobaron2=Reprobaron2+1                   
                         
                         if arg[4]=='si':
-                            if (df.iloc[X, col_generacion_e])[0]=='G':
-                                generacion22=generacion22+1
-                                total_gen2.append(df.iloc[X, col_definitiva])
-                                
-                            if (df.iloc[X, col_generacion_e])[0]=='M':
-                                matricula22=matricula22+1
-                                total_matri02.append(df.iloc[X, col_definitiva])
-                            #print(generacion2)
+                            generacion22, total_gen2, matricula22, total_matri02 = convenio(df,
+                               X, col_generacion_e, col_definitiva, generacion22, total_gen2, matricula22, total_matri02)
                     
                 if (df.iloc[X, col_generacion_e])[0]!='G' and (df.iloc[X, col_generacion_e])[0]!='M':
                         prom_bene2.append(df.iloc[X, col_definitiva])
                 
-         
-                
+           
         elif df.iloc[X, col_matricula]=='Aplazado':
             aplazado+=1
       
-    
-    
     productos = np.transpose([documento,estudiante,correo ])
 
     for z in range(0,len(Centros)):
@@ -329,24 +261,18 @@ def Analisis_Curso(*arg):
     inten=np.transpose([np.arange(0,N_intentos)+1,intento2,repro_intento,apro_intento,repro_intento+apro_intento+intento2])
     condiciones=np.transpose([condi_documento,condi_estudiante,condi_correo,condicion])
     
-    grafica=[]
-    
     total_estudiantes=fil-inicial-aplazado
-    print(total_estudiantes)
-    print(arg[0])
-    print(arg[2])
-    print(Ceros)
     grafica.append(['Total Estudiantes',total_estudiantes])
     grafica.append(['Estudiantes Participaron '+arg[5]+' '+str(arg[2]),total_estudiantes-Ceros])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),Ceros])
-    print("hola")
+    
     grafica.append(['',''])
     grafica.append(['Total Estudiantes',total_estudiantes])
     grafica.append(['Estudiantes Participaron '+arg[5]+' '+str(arg[2]),total_estudiantes-Ceros])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),Ceros])
     grafica.append(['Estudiantes Participaron y Aprobaron '+arg[5]+' '+str(arg[2]),Aprobado])
     grafica.append(['Estudiantes Participaron y No Aprobaron '+arg[5]+' '+str(arg[2]),Reprobaron])
-    print("hola")
+    
     grafica.append(['',''])
     grafica.append(['Aprobaron %',(Aprobado/(total_estudiantes))*100])
     grafica.append(['No participo %',(Ceros/(total_estudiantes))*100])
@@ -361,7 +287,7 @@ def Analisis_Curso(*arg):
     grafica.append(['Total Matricula 0',len(total_matri0)])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),matricula1])
     grafica.append(['Estudiantes Reprobaron ',matricula2])
-    print("hola")
+    
     prom_total.append(total_gen+total_matri0+prom_bene)    
     total_sin_bene=total_estudiantes-len(total_matri0)-len(total_gen)
     apro_sin=Aprobado-apro_Gen-apro_Matri0
@@ -427,7 +353,7 @@ def Analisis_Curso(*arg):
                         statistics.mean(prom_bene2)])
     else:
         grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    if total_sin_bene2 >0:
+    if total_estudiantes2 >0:
         grafica.append(['Total de estudiantes',total_estudiantes2,Aprobado2,(Aprobado2/(total_estudiantes2))*100,
                         Reprobaron2,(Reprobaron2/(total_estudiantes2))*100,Ceros2,(Ceros2/(total_estudiantes2))*100,
                         statistics.mean(prom_total2[0])])

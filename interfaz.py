@@ -30,7 +30,8 @@ class UNAD(Tk):
         self.title('Analisis')   
         self.geometry("500x527")   
         self.config(background = "#004669")
-        self.iconbitmap("Imagenes/unad.ico")
+        #self.iconbitmap("Imagenes/unad.ico")
+        self.iconbitmap("unad.ico")
         self.resizable(0, 0)
         #myFont = Font(family='Helvetica')
         

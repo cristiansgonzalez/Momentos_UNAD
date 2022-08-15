@@ -1,4 +1,11 @@
 
+
+
+
+
+
+
+
 def Analisis_Curso(*arg):
     
     import pandas as pd
@@ -318,6 +325,10 @@ def Analisis_Curso(*arg):
     grafica=[]
     
     total_estudiantes=fil-inicial-aplazado
+
+
+
+
     grafica.append(['Total Estudiantes',total_estudiantes])
     grafica.append(['Estudiantes Participaron '+arg[5]+' '+str(arg[2]),total_estudiantes-Ceros])
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),Ceros])
@@ -383,7 +394,6 @@ def Analisis_Curso(*arg):
     total_sin_bene2=total_estudiantes2-len(total_matri02)-len(total_gen2)
     print(f'sin beneficio {total_sin_bene2}\n',
           f'total estudiantes: {total_estudiantes2}')
-    
     apro_sin2=Aprobado2-apro_Gen2-apro_Matri02
     repo_sin2=Reprobaron2-generacion22-matricula22
     ceros_sin2=Ceros2-generacion12-matricula12
