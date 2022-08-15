@@ -252,9 +252,9 @@ def Analisis_Curso(*arg):
     productos = np.transpose([documento,estudiante,correo ])
 
     for z in range(0,len(Centros)):
-        Center.append([Centros[z],Cent1[z],Cent2[z],aprobado_Cent[z]])   
+        Center.append([Centros[z],Cent1[z],Cent2[z],aprobado_Cent[z], Cent1[z] + Cent2[z] + aprobado_Cent[z]])   
     for z in range(0,len(Programa)):
-        Program.append([Programa[z],Programa1[z],Programa2[z],aprobado_programa[z]])
+        Program.append([Programa[z],Programa1[z],Programa2[z],aprobado_programa[z], Programa1[z] + Programa2[z] + aprobado_programa[z]])
     for z in range(0,len(Zonas)):        
         Zone.append([Zonas[z],zona1[z],zona2[z],aprobado_zona[z],zona1[z]+zona2[z]+aprobado_zona[z]])
     
@@ -288,77 +288,86 @@ def Analisis_Curso(*arg):
     grafica.append(['Estudiantes No Participaron '+arg[5]+' '+str(arg[2]),matricula1])
     grafica.append(['Estudiantes Reprobaron ',matricula2])
     
-    prom_total.append(total_gen+total_matri0+prom_bene)    
-    total_sin_bene=total_estudiantes-len(total_matri0)-len(total_gen)
-    apro_sin=Aprobado-apro_Gen-apro_Matri0
-    repo_sin=Reprobaron-generacion2-matricula2
-    ceros_sin=Ceros-generacion1-matricula1
-    print(f'\nPromedio sin bene {total_sin_bene}\n',
-          f'Promedio total sin bene {prom_total}\n',
-          f'Aprobacion sin bene {apro_sin}\n',
-          f'Reprobado sin bene {repo_sin}\n',
-          f'Ceros sin bene {ceros_sin}\n')
-    
-    grafica.append(['',''])
-    grafica.append(['Mas de un intento',''])
-    grafica.append(['Descripción de estudiantes','# de estudiantes','# Aprobados','% Aprobados',
-                    '# Reprobados','% Reprobados','# Ceros','% Ceros','Promedio de calificación'])
-    if total_gen!=[] and total_gen[0]!='**********':
-        grafica.append(['Estudiantes de Generación E',len(total_gen),apro_Gen,(apro_Gen/len(total_gen))*100,
-                        generacion2,(generacion2/len(total_gen))*100,generacion1,(generacion1/len(total_gen))*100,
-                        statistics.mean(total_gen)])
-    else:
-        grafica.append(['Estudiantes de Generación E','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    if total_matri0!=[] and total_matri0[0]!='**********':
-        grafica.append(['Estudiantes de matricula cero',len(total_matri0),apro_Matri0,(apro_Matri0/len(total_matri0))*100,
-                        matricula2,(matricula2/len(total_matri0))*100,matricula1,(matricula1/len(total_matri0))*100,
-                        statistics.mean(total_matri0)])
-    else:
-        grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    grafica.append(['Estudiantes sin beneficios',total_sin_bene,apro_sin,(apro_sin/total_sin_bene)*100,                    
-                    repo_sin,(repo_sin/total_sin_bene)*100,ceros_sin,(ceros_sin/total_sin_bene)*100,
-                    statistics.mean(prom_bene)])
-    grafica.append(['Total de estudiantes',total_estudiantes,Aprobado,(Aprobado/(total_estudiantes))*100,
-                    Reprobaron,(Reprobaron/(total_estudiantes))*100,Ceros,(Ceros/(total_estudiantes))*100,
-                    statistics.mean(prom_total[0])])
+    if arg[2] > arg[3]:
+        prom_total.append(total_gen+total_matri0+prom_bene)    
+        total_sin_bene=total_estudiantes-len(total_matri0)-len(total_gen)
+        apro_sin=Aprobado-apro_Gen-apro_Matri0
+        repo_sin=Reprobaron-generacion2-matricula2
+        ceros_sin=Ceros-generacion1-matricula1
+        print(f'\nPromedio sin bene {total_sin_bene}\n',
+            f'Promedio total sin bene {prom_total}\n',
+            f'Aprobacion sin bene {apro_sin}\n',
+            f'Reprobado sin bene {repo_sin}\n',
+            f'Ceros sin bene {ceros_sin}\n')
     
     
-    prom_total2.append(total_gen2+total_matri02+prom_bene2)
-    total_sin_bene2=total_estudiantes2-len(total_matri02)-len(total_gen2)
-    print(f'sin beneficio {total_sin_bene2}\n',
-          f'total estudiantes: {total_estudiantes2}')
-    apro_sin2=Aprobado2-apro_Gen2-apro_Matri02
-    repo_sin2=Reprobaron2-generacion22-matricula22
-    ceros_sin2=Ceros2-generacion12-matricula12
+        grafica.append(['',''])
+        grafica.append(['Descripción de estudiantes','# de estudiantes','# Aprobados','% Aprobados',
+                        '# Reprobados','% Reprobados','# Ceros','% Ceros','Promedio de calificación'])
+        if total_gen!=[] and total_gen[0]!='**********':
+            grafica.append(['Estudiantes de Generación E',len(total_gen),apro_Gen,(apro_Gen/len(total_gen))*100,
+                            generacion2,(generacion2/len(total_gen))*100,generacion1,(generacion1/len(total_gen))*100,
+                            statistics.mean(total_gen)])
+        else:
+            grafica.append(['Estudiantes de Generación E','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_matri0!=[] and total_matri0[0]!='**********':
+            grafica.append(['Estudiantes de matricula cero',len(total_matri0),apro_Matri0,(apro_Matri0/len(total_matri0))*100,
+                            matricula2,(matricula2/len(total_matri0))*100,matricula1,(matricula1/len(total_matri0))*100,
+                            statistics.mean(total_matri0)])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_sin_bene > 0:
+            grafica.append(['Estudiantes sin beneficios',total_sin_bene,apro_sin,(apro_sin/total_sin_bene)*100,                    
+                            repo_sin,(repo_sin/total_sin_bene)*100,ceros_sin,(ceros_sin/total_sin_bene)*100,
+                            statistics.mean(prom_bene)])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_estudiantes > 0:
+            grafica.append(['Total de estudiantes',total_estudiantes,Aprobado,(Aprobado/(total_estudiantes))*100,
+                            Reprobaron,(Reprobaron/(total_estudiantes))*100,Ceros,(Ceros/(total_estudiantes))*100,
+                            statistics.mean(prom_total[0])])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
     
     
-    grafica.append(['',''])
-    grafica.append(['Descripción de estudiantes','# de estudiantes','# Aprobados','% Aprobados',
-                    '# Reprobados','% Reprobados','# Ceros','% Ceros','Promedio de calificación'])
-    if total_gen2!=[] and total_gen2[0]!='**********' and total_sin_bene2 != 0:
-        grafica.append(['Estudiantes de Generación E',len(total_gen2),apro_Gen2,(apro_Gen2/len(total_gen2))*100,
-                        generacion22,(generacion22/len(total_gen2))*100,generacion12,(generacion12/len(total_gen2))*100,
-                        statistics.mean(total_gen2)])
-    else:
-        grafica.append(['Estudiantes de Generación E','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    if total_matri02!=[] and total_matri02[0]!='**********':
-        grafica.append(['Estudiantes de matricula cero',len(total_matri02),apro_Matri02,(apro_Matri02/len(total_matri02))*100,
-                        matricula22,(matricula22/len(total_matri02))*100,matricula12,(matricula12/len(total_matri02))*100,
-                        statistics.mean(total_matri02)])
-    else:
-        grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    if total_sin_bene2 >0:
-        grafica.append(['Estudiantes sin beneficios',total_sin_bene2,apro_sin2,(apro_sin2/total_sin_bene2)*100,                    
-                        repo_sin2,(repo_sin2/total_sin_bene2)*100,ceros_sin2,(ceros_sin2/total_sin_bene2)*100,
-                        statistics.mean(prom_bene2)])
-    else:
-        grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
-    if total_estudiantes2 >0:
-        grafica.append(['Total de estudiantes',total_estudiantes2,Aprobado2,(Aprobado2/(total_estudiantes2))*100,
-                        Reprobaron2,(Reprobaron2/(total_estudiantes2))*100,Ceros2,(Ceros2/(total_estudiantes2))*100,
-                        statistics.mean(prom_total2[0])])
-    else:
-        grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+    
+        prom_total2.append(total_gen2+total_matri02+prom_bene2)
+        total_sin_bene2=total_estudiantes2-len(total_matri02)-len(total_gen2)
+        print(f'sin beneficio {total_sin_bene2}\n',
+            f'total estudiantes: {total_estudiantes2}')
+        apro_sin2=Aprobado2-apro_Gen2-apro_Matri02
+        repo_sin2=Reprobaron2-generacion22-matricula22
+        ceros_sin2=Ceros2-generacion12-matricula12
+        
+        
+        grafica.append(['',''])
+        grafica.append(['Repitentes',''])
+        grafica.append(['Descripción de estudiantes','# de estudiantes','# Aprobados','% Aprobados',
+                        '# Reprobados','% Reprobados','# Ceros','% Ceros','Promedio de calificación'])
+        if total_gen2!=[] and total_gen2[0]!='**********' and total_sin_bene2 != 0:
+            grafica.append(['Estudiantes de Generación E',len(total_gen2),apro_Gen2,(apro_Gen2/len(total_gen2))*100,
+                            generacion22,(generacion22/len(total_gen2))*100,generacion12,(generacion12/len(total_gen2))*100,
+                            statistics.mean(total_gen2)])
+        else:
+            grafica.append(['Estudiantes de Generación E','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_matri02!=[] and total_matri02[0]!='**********':
+            grafica.append(['Estudiantes de matricula cero',len(total_matri02),apro_Matri02,(apro_Matri02/len(total_matri02))*100,
+                            matricula22,(matricula22/len(total_matri02))*100,matricula12,(matricula12/len(total_matri02))*100,
+                            statistics.mean(total_matri02)])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_sin_bene2 >0:
+            grafica.append(['Estudiantes sin beneficios',total_sin_bene2,apro_sin2,(apro_sin2/total_sin_bene2)*100,                    
+                            repo_sin2,(repo_sin2/total_sin_bene2)*100,ceros_sin2,(ceros_sin2/total_sin_bene2)*100,
+                            statistics.mean(prom_bene2)])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
+        if total_estudiantes2 >0:
+            grafica.append(['Total de estudiantes',total_estudiantes2,Aprobado2,(Aprobado2/(total_estudiantes2))*100,
+                            Reprobaron2,(Reprobaron2/(total_estudiantes2))*100,Ceros2,(Ceros2/(total_estudiantes2))*100,
+                            statistics.mean(prom_total2[0])])
+        else:
+            grafica.append(['Estudiantes de matricula cero','N.A','N.A','N.A','N.A','N.A','N.A','N.A','N.A'])
 
     
     est = pd.DataFrame (productos)
@@ -370,13 +379,14 @@ def Analisis_Curso(*arg):
     condi =pd.DataFrame (condiciones)
     
     try:
-        with pd.ExcelWriter(arg[0]+' Reporte '+str(arg[2])+'.xlsx') as writer:  
+        with pd.ExcelWriter(arg[0]+' Reporte '+str(arg[2])+'.xlsx') as writer:
+            cab = ['Ceros','Reprobaron','Aprobaron','Total']
             est.to_excel(writer, sheet_name='Estudiantes',header=['Cedula','Estudiante','Correo'],index=False)
             gra.to_excel(writer, sheet_name='Grafica',header=False,index=False)
-            ce.to_excel(writer, sheet_name='Centros',header=['Centros','Ceros','Reprobaron','Aprobaron'],index=False)
-            po.to_excel(writer, sheet_name='Programa',header=['Programa','Ceros','Reprobaron','Aprobaron'],index=False)
-            te.to_excel(writer, sheet_name='Intentos',header=['Intentos','Ceros','Reprobaron','Aprobaron','Total'],index=False)
-            zo.to_excel(writer, sheet_name='Zonas',header=['Zonas','Ceros','Reprobaron','Aprobaron','Total'],index=False)
+            ce.to_excel(writer, sheet_name='Centros',header=['Centros'] + cab, index = False)
+            po.to_excel(writer, sheet_name='Programa',header=['Programa'] + cab, index = False)
+            te.to_excel(writer, sheet_name='Intentos',header=['Intentos'] + cab, index = False)
+            zo.to_excel(writer, sheet_name='Zonas',header=['Zonas'] + cab, index = False)
             condi.to_excel(writer, sheet_name='Condiciones',header=['Cedula','Estudiante','Correo','Condicion especial'],index=False)
     except:        
         print('\n\nNo se puedo crear el '+'Reporte '+str(arg[2])+'.xlsx\n')
